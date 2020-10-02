@@ -15,7 +15,7 @@ app.use( cors() )
 app.use( express.static('public') )
 
 //aceptar form-format
-app.use( express.urlencoded({ extended: false }) )
+app.use( express.json() )
 
 //rutas
 app.use( '/user', require('./routes/user.routes') )

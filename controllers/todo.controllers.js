@@ -8,7 +8,7 @@ const GetTodos = async( req = request, res = response ) => {
 
 	try {
 
-		const todos = await Todo.find({ user: uid })
+		const todos = await Todo.find({ user: uid }).sort({ createdAt:'desc' })
 
 		res.json({
 			ok: true,

@@ -41,7 +41,7 @@ router.put(
 	UpdateProfile 
 )
 
-router.post( 
+router.get( 
 	'/revalidate-token', 
 	validateJWT,
 	RevalidateToken 

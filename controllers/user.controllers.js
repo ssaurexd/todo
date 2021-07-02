@@ -30,6 +30,8 @@ const SignUp = async( req = request, res = response ) => {
 
 		//generar JWT
 		const token = await setJWT( user.id, user.name )
+		//cookie
+		
 	
 		res.json({
 			ok: true,
@@ -79,6 +81,9 @@ const SignIn = async( req = request, res = response ) => {
 		
 		//generar JWT
 		const token = await setJWT( user.id, user.name )
+
+		//seteamos una cookie token
+		res.cookie( 'token', token, { httpOnly: true } )
 
 		res.json({
 			ok: true,

@@ -82,15 +82,17 @@ const SignIn = async( req = request, res = response ) => {
 		//generar JWT
 		const token = await setJWT( user.id, user.name )
 
-		//seteamos una cookie token
-		res.cookie( 'token', token, { httpOnly: true } )
-
-		res.json({
-			ok: true,
-			uid: user.id,
-			name: user.name,
-			token
-		})
+		
+		res
+			.cookie('token', token, {
+				secure: false
+			})
+			.json({
+				ok: true,
+				uid: user.id,
+				name: user.name,
+				token
+			})
 	} 
 	catch ( error ) {
 		

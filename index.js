@@ -1,4 +1,5 @@
 const express = require('express')
+const cookieParser = require('cookie-parser')
 const app = express()
 require('dotenv').config()
 const db = require('./database/config')
@@ -9,7 +10,14 @@ const cors = require('cors')
 db()
 
 //cors
-app.use( cors() )
+app.use( cors({
+	origin: 'http://localhost:3000',
+  	optionsSuccessStatus: 200,
+	credentials: true
+}) )
+
+//cookies
+app.use( cookieParser() )
 
 //dir publico
 app.use( express.static('public') )
